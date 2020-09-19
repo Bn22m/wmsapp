@@ -1,0 +1,56 @@
+{% extends "baseapp.html" %}
+{% block title %}Northwind WMS{% endblock %}
+{% block stlcss %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static '/homeapp/app.css' %}">
+{% endblock %}
+{% block content %}
+<h1>Welcome to: {{ pname }}</h1>
+<div>
+  {{ time }}
+</div>
+<hr>
+<div>
+<div class="lblhead">
+<label class="lblProduct"><p>Service</p></label> <label class="lblDescription"><p>Details</p></label>
+</div>
+{% for x in info %}
+    <form class="frmord" action="/infoserviceapp/{{ x.info }}" method="post">
+      {% csrf_token %}
+      <label class="lblProduct">
+        <p><input class="cinpt" type="text" name="product" value="{{ x.name }}" maxlength="30" readonly /></p>
+        <p><input class="cinpt" type="text" name="code" value="{{ x.id }}" maxlength="30" readonly /></p>
+      </label>
+      <label class="lblDescription">
+        <p>{{ x.description }}</p>
+        <input class="cinpt" type="text" name="description" value="{{ x.description }}" maxlength="300" readonly hidden />
+        <button type="submit">More</button>
+      </label>
+    </form>
+{% endfor %}
+</div>
+<hr>
+<div>
+  {% if info.has_next %}
+    <p>
+        <a href="?page={{info.next_page_number}}">next</a>
+        <a href="?page={{info.paginator.num_pages}}">last &raquo;</a>
+    </p>
+  {% endif %}
+</div>
+<div>
+  <p>{{ info }}</p>
+</div>
+<div>
+  {% if info.has_previous %}
+    <p>
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{info.previous_page_number}}">previous</a>
+    </p>
+  {% endif %}
+</div>
+<br>
+<hr>
+{{ ip }}
+{{ year }}
+{% endblock %}

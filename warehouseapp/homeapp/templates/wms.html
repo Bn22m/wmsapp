@@ -1,0 +1,18 @@
+{% extends "baseapp.html" %}
+{% block title %}{{ pname }}{% endblock %}
+{% block content %}
+<h1>{{ pname }}</h1>
+<div>
+    {{ time }}
+</div>
+<hr>
+<div>
+  {% load static %}
+  <div class="dvcpic1"><img src="{% static '/homeapp/images/wms.jpg' %}" alt="wms"></div>
+  <img src="{% static '/homeapp/images/wms.jpg' %}" alt="wms">
+</div>
+<div>
+    {{ info }}
+    {{ year }}
+</div>
+{% endblock %}

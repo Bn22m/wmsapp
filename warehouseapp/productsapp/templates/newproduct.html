@@ -1,0 +1,100 @@
+{% extends "baseapp.html" %}
+{% block title %}WMS: Products{% endblock %}
+{% block stlcss %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static '/productsapp/app.css' %}">
+{% endblock %}
+{% block content %}
+<h1>Products: {{ pname }}</h1>
+<div>
+  {{ time }}
+</div>
+<hr>
+<div>
+  <progress id="ckpdbprogres" value="0" max="100">0%</progress>
+  <div id="dvresults">
+  </div>
+</div>
+<div>
+  <label id="lblckproductID" name="lblckproductID"></label>
+  <p><input class="ccinpt" type="text" id="ckproductID" name="ckproductID" placeholder="productid" value="{{ productid }}" maxlength="90" /></p>
+  <button type="button" id="btnckproductID" name="btnckproductID" onclick="checkProduct()" >Check</button>
+</div>
+<hr>
+<div class="dvregister">
+  <form class="frmreg" enctype="multipart/form-data" action="/productsapp/newproducts" method="post">
+  {% csrf_token %}
+    <div class="dvreg">
+        <label>Product ID:</label><br>
+        <input class="ccinpt" type="text" id="productID" name="productID" placeholder="productid" value="{{ productid }}" maxlength="90"  required/>
+    </div>
+    <div class="dvreg">
+        <label>Product Name:</label><br>
+        <input class="cinpt" type="text" id="productName" name="productName" placeholder="productname" value="{{ productname }}" maxlength="90"  required/>
+    </div>
+    <div class="dvreg">
+        <label>Supplier ID:</label><br>
+        <input class="ccinpt" type="text" id="supplierID" name="supplierID" placeholder="supplierid" value="{{ supplierid }}" maxlength="90"  required/>
+    </div>
+    <div class="dvreg">
+        <label>Category ID:</label><br>
+        <input class="ccinpt" type="text" id="pcategoryID" name="pcategoryID" placeholder="categoryid" value="{{ categoryid }}" maxlength="90" readonly required/>
+    </div>
+    <div class="dvreg">
+        <label>Quantity Per Unit:</label><br>
+        <input class="cinpt" type="number" id="quantityPerUnit" name="quantityPerUnit" placeholder="quantityperunit" value="{{ quantityperunit }}" min="0.00" step="0.01" required/>
+    </div>
+    <div class="dvreg">
+        <label>Unit Price:</label><br>
+        <input class="cinpt" type="number" id="unitPrice" name="unitPrice" placeholder="unitprice" value="{{ unitprice }}" min="0.00" step="0.01" required />
+    </div>
+    <div class="dvreg">
+        <label>Units In Stock:</label><br>
+        <input class="cinpt" type="number" id="unitsInStock" name="unitsInStock" placeholder="unitsinstock" value="{{ unitsinstock }}" min="0.00" step="0.01" />
+    </div>
+    <div class="dvreg">
+        <label>Units On Order:</label><br>
+        <input class="cinpt" type="number" id="unitsOnOrder" name="unitsOnOrder" placeholder="unitsonorder" value="{{ unitsonorder }}" min="0.00" step="0.01" />
+    </div>
+    <div class="dvreg">
+        <label>Reorder Level:</label><br>
+        <input class="cinpt" type="number" id="reorderLevel" name="reorderLevel" placeholder="reorderlevel" value="{{ reorderlevel }}" min="0.00" step="0.01" required />
+    </div>
+    <div class="dvreg">
+    <label> Discontinued: </label><br>
+    <select name="discontinued">
+        <option value="False" selected>[False]</option>
+        <option value="True">True</option>
+        <option value="False">False</option>
+    </select>
+  </div>
+  <div class="dvreg">
+      <label>Category ID:</label><br>
+      <input class="ccinpt" type="text" id="categoryID" name="categoryID" placeholder="categoryid" value="{{ categoryid }}" maxlength="90"  required/>
+  </div>
+  <div class="dvreg">
+      <label>Category Name:</label><br>
+      <input class="cinpt" type="text" id="categoryName" name="categoryName" placeholder="categoryname" value="{{ categoryname }}" maxlength="90"  required/>
+  </div>
+  <div class="dvreg">
+      <label>Description:</label><br>
+      <textarea id="description" name="description" placeholder="description" rows="2" cols="2" required>{{ description }}</textarea>
+  </div>
+ <div class="dvreg">
+      <p>Picture: <input type="file" name="filename" required></p>
+      <p>jpg</p>
+      <p> 500 KB or less </p>
+      <p><input class="cinpt" type="text" id="picture" name="picture" placeholder="picture" value="{{ picture }}" maxlength="90" readonly/></p>
+  </div>
+  <p><input type="submit" value="OK"/></p>
+  </form>
+</div>
+
+<div>
+  <hr>
+  <p>info: {{ info }}</p>
+  <hr>
+  {{ year }}
+</div>
+<script src="{% static '/productsapp/js/newproduct.js' %}"></script>
+{% endblock %}

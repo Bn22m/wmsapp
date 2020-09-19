@@ -1,0 +1,145 @@
+{% extends "baseapp.html" %}
+{% block title %}WMS: Products{% endblock %}
+{% block stlcss %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static '/productsapp/app.css' %}">
+{% endblock %}
+{% block content %}
+<h1>Products: {{ pname }}</h1>
+<div>
+  {{ time }}
+</div>
+<hr>
+<div id="dvsearch" class="dvreg">
+  <label> Search: </label><br>
+  <select name="searchp" id="searchp">
+    <option value="search" selected>[ ]</option>
+    <option value="newproduct">newproduct</option>
+    <option value="category">category</option>
+    <option value="supplier">supplier</option>
+    <option value="allproducts">Refresh</option>
+  </select>
+  <div id="dvfilter">
+    <input class="cinpt" type="number" id="searchrows" name="searchrows" placeholder="number of rows" value="{{ searchrows }}" min="1" step="1" max="150" />
+    <input class="ccinpt" type="text" id="filter" name="filter" placeholder="filter by category or supplier" value="{{ txtfilterid }}" maxlength="90" />
+    <button type="button" id="btnfilter" name="btnfilter" value="Filter" onclick="productfilter()">Filter</button>
+  </div>
+  <div>
+    <input type="number" id="txtProductListSize" name="txtProductListSize" value="0">
+    <input type="number" id="txtSuppliersListSize" name="txtSuppliersListSize" value="0">
+  </div>
+</div>
+<hr>
+<div id="dvmore">
+  <form class="frmsearch" action="/productsapp/getproducts" method="post">
+  {% csrf_token %}
+    <label id="lblshow"></label>
+    <input class="cinpt" type="text" id="txtmore" name="txtmore" value="{{ txtmore }}" maxlength="90" readonly required/>
+  <input type="submit" value="More..."/>
+  </form>
+</div>
+<div>
+  <progress id="dbprogres" value="0" max="100">0%</progress>
+  <p id="dvresults"></p>
+</div>
+<div id="dvsuppliers">
+  <p id="dvresults2"></p>
+</div>
+<p>{{ dbl }}</p>
+<div>
+  <div id="dvinfo"></div>
+  <div id="dvinfo2"></div>
+  <div id="dvdisplay"></div>
+</div>
+<div id="dvpproducts">
+  <div class="dvtbl">
+    <table id="tblproducts">
+    <tbody>
+      <tr class="header">
+        <th>productid</th>
+        <th>productname</th>
+        <th>supplierid</th>
+        <th>categoryid</th>
+        <th>quantityperunit</th>
+        <th>unitprice</th>
+        <th>unitsinstock</th>
+        <th>unitsonorder</th>
+        <th>reorderlevel</th>
+        <th>discontinued</th>
+        <th>search by supplier</th>
+        <th>search by category</th>
+        <th>info</th>
+      </tr>
+      {% for x in pproducts %}
+      <tr>
+        <td>{{ x.productID }}</td>
+        <td>{{ x.productName }}</td>
+        <td>{{ x.supplierID }}</td>
+        <td>{{ x.categories.categoryID }}</td>
+        <td>{{ x.quantityPerUnit }}</td>
+        <td>{{ x.unitPrice }}</td>
+        <td>{{ x.unitsInStock }}</td>
+        <td>{{ x.unitsOnOrder }}</td>
+        <td>{{ x.reorderLevel }}</td>
+        <td>{{ x.discontinued }}</td>
+        <td>
+          <input class="cinpt" type="text" id="ssupplierid" name="ssupplierid" placeholder="supplierid" value="{{ x.supplierID }}" maxlength="90" hidden required/>
+          <button type="button" value="Filter" onclick="productFilterT('{{ x.supplierID }}', 'supplier')">Filter</button>
+        </td>
+        <td>
+          <input class="cinpt" type="text" id="scategoryid" name="scategoryid" placeholder="categoryid" value="{{ x.categories.categoryID }}" maxlength="90" hidden required/>
+          <button type="button" value="Filter" onclick="productFilterT('{{ x.categories.categoryID }}', 'category')">Filter</button>
+        </td>
+        <td><div class="dvcpic1"><img src="{% static x.categories.picture %}" alt="wms"></div></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    </table>
+  </div>
+</div>
+<hr>
+<div>
+  {% if pproducts.has_next %}
+    <p>
+        <a href="?page={{pproducts.next_page_number}}">next</a>
+        <a href="?page={{pproducts.paginator.num_pages}}">last &raquo;</a>
+    </p>
+  {% endif %}
+</div>
+<div>
+  <p>{{ pproducts }}</p>
+</div>
+<div>
+  {% if pproducts.has_previous %}
+    <p>
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{pproducts.previous_page_number}}">previous</a>
+    </p>
+  {% endif %}
+</div>
+<hr>
+<div class="dvregister" id="dvnew">
+  <a href="/productsapp/newproduct">New Products</a>
+</div>
+<hr>
+<div id="dvtblfilter">
+</div>
+<hr>
+<div>
+<textarea id="txtdbproduct" name="txtdbproduct" rows="8" cols="8" placeholder="Products:" readonly>{{ dbproduct }}</textarea>
+</div>
+<div>
+  <hr>
+  <p>info: {{ info }}</p>
+  <hr>
+  <hr>
+  {{ year }}
+</div>
+
+<script src="{% static '/productsapp/js/mergesort.js' %}"></script>
+<script src="{% static '/productsapp/js/binarysearch.js' %}"></script>
+<script src="{% static '/productsapp/js/wmsfilter.js' %}"></script>
+<script src="{% static '/productsapp/js/displayapp.js' %}"></script>
+<script src="{% static '/productsapp/js/suppliersfilter.js' %}"></script>
+<script src="{% static '/productsapp/js/app.js' %}"></script>
+{% endblock %}

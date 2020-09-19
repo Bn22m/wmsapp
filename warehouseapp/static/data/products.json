@@ -1,0 +1,22 @@
+[
+  {"productid": "10002","productname": "proWMS", 
+  "supplierid": "202008281031123", "categoryid": "sd2",
+  "quantityperunit": "100", "unitprice": "250.00", "unitsinstock": "49",
+  "unitsonorder": "100", "reorderlevel": "60", "discontinued": "False"},
+  {"productid": "10003","productname": "proIS",
+  "supplierid": "202008291431123", "categoryid": "is6",
+  "quantityperunit": "300", "unitprice": "3250.00", "unitsinstock": "249",
+  "unitsonorder": "0", "reorderlevel": "50", "discontinued": "False"},
+  {"productid": "10004", "productname": "proIoT",
+  "supplierid": "202008301531123", "categoryid": "iot7",
+  "quantityperunit": "500", "unitprice": "350.00", "unitsinstock": "749",
+  "unitsonorder": "0", "reorderlevel": "30", "discontinued": "False"},
+  {"productid": "10005", "productname": "proIoTv6",
+  "supplierid": "202008291431123", "categoryid": "iot7",
+  "quantityperunit": "500", "unitprice": "350.00", "unitsinstock": "749",
+  "unitsonorder": "0", "reorderlevel": "30", "discontinued": "False"},
+  {"productid": "10006", "productname": "proIT",
+  "supplierid": "202008301531123", "categoryid": "is6",
+  "quantityperunit": "500", "unitprice": "350.00", "unitsinstock": "49",
+  "unitsonorder": "0", "reorderlevel": "30", "discontinued": "False"}
+]

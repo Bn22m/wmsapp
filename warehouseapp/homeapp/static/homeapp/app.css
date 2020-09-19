@@ -1,0 +1,19 @@
+/*
+app.css
+Author     : Brian
+*/
+
+.lblProduct{
+  background: #fffff8;
+  width: 350px;
+  border: groove 10px green;
+  display: inline-block;
+}
+
+.lblDescription{
+  width: 400px;
+  background: #effff8;
+  border: groove 10px green;
+  border-radius: 0.5em;
+  display: inline-block;
+}

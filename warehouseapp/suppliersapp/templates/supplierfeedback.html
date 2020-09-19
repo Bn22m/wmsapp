@@ -1,0 +1,31 @@
+{% extends "baseapp.html" %}
+{% block title %}WMS: Supplier{% endblock %}
+{% block stlcss %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static '/productsapp/app.css' %}">
+{% endblock %}
+{% block content %}
+<h1>Supplier: {{ pname }}</h1>
+<b>{{ message }}</b>
+<div>
+  {{ time }}
+</div>
+<hr>
+<h1> {{ app.supplierID }} </h1>
+<div class="dvproject">
+    <p>campanyName:     {{ app.companyName }}</p>
+    <p>contactName:     {{ app.contactName }}</p>
+    <p>contactTitle:    {{ app.contactTitle }}</p>
+    <p>address:         {{ app.address }}</p>
+    <p>city:            {{ app.city }}</p>
+    <p>region:          {{ app.region }}</p>
+    <p>postalCode:      {{ app.postalCode }}</p>
+    <p>country:         {{ app.country }}</p>
+    <p>phone:           {{ app.phone }}</p>
+    <p>fax:             {{ app.fax }}</p>
+    <p>homePage:        {{ app.homePage }}</p>
+</div>
+<hr>
+{{ ip }}
+{{ year }}
+{% endblock %}

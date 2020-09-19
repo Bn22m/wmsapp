@@ -1,0 +1,195 @@
+################################################################
+# Software Engineer: Web Application Project.                  #
+# Warehouse App: To manage categories, products and suppliers. #
+# 2020.                                                        #
+################################################################
+
+1. Install and setup python.
+2. Install and setup mongodb.
+3. Install django.
+4. Install djongo.
+# pip install djongo
+5. Install webtest
+# pip install webtest
+6. Install django-webtest
+# pip install django-webtest
+
+7. Start the server.
+# pathto\MongoDB\Server\4.0\bin>mongod
+# 2020-09-15T09:47:12.835+0200 I NETWORK  [initandlisten] waiting for connections on port 27017
+#
+
+8. Create database.
+# pathto\MongoDB\Server\4.0\bin>mongo
+MongoDB shell version v4.0.9
+connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb
+> db
+test
+> use nwwarehousedb
+switched to db nwwarehousedb
+> db
+nwwarehousedb
+>
+
+9.
+$ cd warehouseapp
+$ py manage.py runserver
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have 17 unapplied migration(s). Your project may not work properly until you apply the mig
+rations for app(s): admin, auth, contenttypes, sessions.
+Run 'python manage.py migrate' to apply them.
+August 28, 2020 - 09:50:46
+Django version 3.0.5, using settings 'warehouseapp.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+
+10.
+# NoSQL database.
+10.1 The best things in life are free.
+10.2 It uses big data.
+10.3 If your computer runs out of space, you can scale it horizontally.
+10.4 You can add more nodes on you database for backup.
+10.5 You can replicate data on multiple nodes for availability.
+10.6 It supports sharding, you can store data records across multiple machines.
+10.7 It is possible to split the large problem into smaller parts and to
+distribute computation across multiple nodes or servers and do parallel data
+processing.
+10.8 It implements map/reduce.
+10.9 It supports load balancing. A client can be configured with a list of
+addresses for servers.
+10.10 Just ask yourself what is it that you can't do with traditional relational
+database?
+10.11 It is schema less database, every time you redefine a model mongodb does
+not expect you to redefine the schema.
+10.12 Modifying your models is much faster compared to traditional ORM.
+10.13 It is a cross platform database. You can use it on multiple platforms.
+10.14 It uses JSON format, which makes it a good choice for data exchange
+between the front-end, back-end and for interoperability.
+
+11.
+# Enjoy.
+
+12.
+TDD:
+#
+$ py manage.py test
+System check identified no issues (0 silenced).
+#
+##############################################################
+#
+#00 Testing: Client, Content, Context.
+#01: Test supplier index: 2020-09-10 09:05:41.953936
+#02: Test ordersapp index: 2020-09-10 09:05:42.023940 <HttpResponse status_code=200, "text/htm
+l; charset=utf-8">
+Client: <django.test.client.Client object at 0x0000000005226310>
+#
+##############################################################
+#
+#03:
+Content: b'<!DOCTYPE html>\n<html lang="en">\n\t<head>\n\t\t<meta charset="utf-8">\n    <meta
+name="viewport" content="width=device-width, initial-scale=1">\n    \n  \n  <link rel="stylesh
+eet" href="/static/productsapp/app.css">\n\n    \n    <link rel="stylesheet" href="/static/css
+
+
+#01: Test orders: 2020-09-10 09:05:42.074943
+# 01: Test productsapp/newproducts: 2020-09-10 09:05:42.285955
+#01: Test suppliers: 2020-09-10 09:05:42.445964
+
+
+
+Response: 200
+.
+----------------------------------------------------------------------
+Ran 6 tests in 0.548s
+
+OK
+#############
+
+..\MongoDB\Server\4.0\bin>mongo
+MongoDB shell version v4.0.9
+connecting to: mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb
+
+> db
+test
+> use nwwarehousedb
+switched to db nwwarehousedb
+> db
+nwwarehousedb
+> show dbs
+admin          0.000GB
+config         0.000GB
+local          0.000GB
+nwwarehousedb  0.000GB
+> show collections
+django_session
+productsapp_orderdetails
+productsapp_products
+productsapp_suppliers
+>
+> db.productsapp_suppliers.find()
+#
+> db.productsapp_products.find()
+#
+> db.productsapp_orderdetails.find()
+#
+>
+##################################################
+$ py manage.py test
+Creating test database for alias 'default'...
+
+System check identified no issues (0 silenced).
+#00 setup: 0:00:02.911167 test01_suppliers (productsapp.ptests.test_wms.TestWmsApp)
+##############################################################
+#
+
+#
+##############################################################
+#
+.#00 setup: 0:00:04.007230 test02_category (productsapp.ptests.test_wms.TestWmsApp)
+##############################################################
+#
+
+#
+##############################################################
+#
+.#00 setup: 0:00:04.953284 test03_orders (productsapp.ptests.test_wms.TestWmsApp)
+##############################################################
+#
+
+#
+##############################################################
+#
+.#00 setup: 0:00:06.223356 test04_products (productsapp.ptests.test_wms.TestWmsApp)
+##############################################################
+#
+<pymongo.results.BulkWriteResult object at 0x0000000005A9B500>
+##############################################################
+{'_id': ObjectId('5f66044dbb6a649c51da9814'),
+ 'categories': {'categoryID': 'dtmd2',
+                'categoryName': 'Awesome',
+                'description': 'Awesome category with cool look and feel.',
+                'picture': 'categoriesapp/cpicture/d5purple.jpg'},
+ 'discontinued': 'False',
+ 'productID': '100080',
+ 'productName': 'eoTv6',
+ 'quantityPerUnit': '500',
+ 'reorderLevel': '30',
+ 'supplierID': '202006291431123',
+ 'unitPrice': '350.00',
+ 'unitsInStock': '29',
+ 'unitsOnOrder': 1000.0}
+##############################################################
+unitsOnOrder = 1000.0
+#
+##############################################################
+#04
+#
+MongoClient(host=['localhost:27017'], document_class=dict, tz_aware=False, connect=True)
+#@ We are done. Thank you for Testing. Enjoy...
+#
+##############################################################
+#

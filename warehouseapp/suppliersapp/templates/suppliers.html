@@ -1,0 +1,87 @@
+{% extends "baseapp.html" %}
+{% block title %}WMS: Suppliers{% endblock %}
+{% block stlcss %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static '/productsapp/app.css' %}">
+{% endblock %}
+{% block content %}
+<h1>Suppliers: {{ pname }}</h1>
+<div>
+  {{ time }}
+</div>
+<hr>
+<div>
+  <progress id="cksdbprogres" value="0" max="100">0%</progress>
+  <div id="dvresults">
+  </div>
+</div>
+<div>
+  <label id="lblcksupplierID" name="lblcksupplierID"></label>
+  <p><input class="ccinpt" type="text" id="cksupplierID" name="ckssupplierID" placeholder="supplierid" value="{{ supplierid }}" maxlength="90" /></p>
+  <button type="button" id="btncksupplierid" name="btnckproductid" onclick="checkSuppliers()" >Check</button>
+</div>
+<hr>
+<div class="dvregister">
+  <form class="frmreg" action="/suppliersapp/suppliers" method="post">
+  {% csrf_token %}
+  <div class="dvreg">
+      <label>Supplier ID:</label><br>
+      <input class="ccinpt" type="text" id="supplierID" name="supplierID" placeholder="supplierid" value="{{ supplierid }}" maxlength="90"  required/>
+  </div>
+  <div class="dvreg">
+      <label>Company Name:</label><br>
+      <input class="cinpt" type="text" id="companyName" name="companyName" placeholder="companyname" value="{{ companyname }}" maxlength="90"  required/>
+  </div>
+  <div class="dvreg">
+      <label>Contact Name:</label><br>
+      <input class="cinpt" type="text" id="contactName" name="contactName" placeholder="contactname" value="{{ contactname }}" maxlength="90" required />
+  </div>
+  <div class="dvreg">
+      <label>Contact Title:</label><br>
+      <input class="cinpt" type="text" id="contactTitle" name="contactTitle" placeholder="contacttitle" value="{{ contacttitle }}" maxlength="30"/>
+  </div>
+  <div class="dvreg">
+      <label>Address:</label><br>
+      <textarea id="address" name="address" placeholder="address" rows="2" cols="2" required>{{ address }}</textarea>
+  </div>
+  <div class="dvreg">
+      <label>City:</label><br>
+      <input class="cinpt" type="text" id="city" name="city" placeholder="city" value="{{ city }}" maxlength="90" required />
+  </div>
+  <div class="dvreg">
+      <label>Region:</label><br>
+      <input class="cinpt" type="text" id="region" name="region" placeholder="region" value="{{ region }}" maxlength="90" required />
+  </div>
+  <div class="dvreg">
+      <label>Postal Code:</label><br>
+      <input class="cinpt" type="text" id="postalCode" name="postalCode" placeholder="postalcode" value="{{ postalcode }}" maxlength="90" required />
+  </div>
+  <div class="dvreg">
+      <label>Country:</label><br>
+      <input class="cinpt" type="text" id="country" name="country" placeholder="country" value="{{ country }}" maxlength="90" required />
+  </div>
+  <div class="dvreg">
+      <label>Phone:</label><br>
+      <input class="cinpt" type="text" id="phone" name="phone" placeholder="phone" value="{{ phone }}" maxlength="90" required />
+  </div>
+  <div class="dvreg">
+      <label>Fax:</label><br>
+      <input class="cinpt" type="text" id="fax" name="fax" placeholder="fax" value="{{ fax }}" maxlength="90" />
+  </div>
+  <div class="dvreg">
+      <label>Home Page:</label><br>
+      <input class="ccinpt" type="url" id="homePage" name="homePage" placeholder="homepage" value="{{ homepage }}" maxlength="90" />
+  </div>
+  <p><input type="submit" value="OK"/></p>
+  </form>
+</div>
+
+<div>
+  <hr>
+  <p>info: {{ info }}</p>
+  <hr>
+  {{ year }}
+</div>
+
+<script src="{% static '/suppliersapp/js/app.js' %}"></script>
+{% endblock %}

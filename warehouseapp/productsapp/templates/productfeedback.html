@@ -1,0 +1,37 @@
+{% extends "baseapp.html" %}
+{% block title %}WMS: Products{% endblock %}
+{% block stlcss %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static '/productsapp/app.css' %}">
+{% endblock %}
+{% block content %}
+<h1>Products: {{ pname }}</h1>
+<b>{{ message }}</b>
+<div>
+  {{ time }}
+</div>
+<hr>
+<div class="gdvuiprofile">
+  {% load static %}
+  <img src="{% static app.categories.picture %}" alt="{{ pdate }}">
+</div>
+<hr>
+<h1> {{ app.productID }} </h1>
+<div class="dvproject">
+    <p>productName:     {{ app.productName }}</p>
+    <p>supplierID:      {{ app.suppliers.supplierID }}</p>
+    <p>categoryID:      {{ app.categories.categoryID }}</p>
+    <p>quantityPerUnit: {{ app.quantityPerUnit }}</p>
+    <p>unitPrice:       {{ app.unitPrice }}</p>
+    <p>unitsInStock:    {{ app.unitsInStock }}</p>
+    <p>unitsOnOrder:    {{ app.unitsOnOrder }}</p>
+    <p>reorderLevel:    {{ app.reorderLevel }}</p>
+    <p>discontinued:    {{ app.discontinued }}</p>
+    <p>categoryID:      {{ app.categories.categoryID }}</p>
+    <p>description:     {{ app.categories.description }}</p>
+    <p>picture:         {{ app.categories.picture }}</p>
+</div>
+<hr>
+{{ ip }}
+{{ year }}
+{% endblock %}

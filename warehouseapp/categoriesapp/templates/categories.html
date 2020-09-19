@@ -1,0 +1,40 @@
+{% extends "baseapp.html" %}
+{% block title %}WMS: Categories{% endblock %}
+{% block stlcss %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static '/productsapp/app.css' %}">
+{% endblock %}
+{% block content %}
+<h1>Categories: {{ pname }}</h1>
+<div>
+  {{ time }}
+</div>
+<hr>
+<div class="dvsearch">
+  <form class="frmsearch" action="/productsapp/" method="post">
+  {% csrf_token %}
+  <div class="dvreg">
+      <label>Category ID:</label><br>
+      <input class="ccinpt" type="text" id="categoryID" name="categoryID" placeholder="categoryid" value="{{ categoryid }}" maxlength="90"  required/>
+  </div>
+  <p><input type="submit" value="Search"/></p>
+  </form>
+</div>
+<div id="dvcatpicture">
+  {% load static %}
+  <img src="{% static cpicture %}" alt="{{ categoryname }}">
+</div>
+<div id="dvresults">
+<p>{{ categoryid }}</p>
+<p>{{ categoryname }}</p>
+<p>{{ description }}</p>
+</div>
+<hr>
+<div>
+  <hr>
+  <p>info: {{ info }}</p>
+  <hr>
+  {{ year }}
+</div>
+
+{% endblock %}

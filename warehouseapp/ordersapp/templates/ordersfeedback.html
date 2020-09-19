@@ -1,0 +1,28 @@
+{% extends "baseapp.html" %}
+{% block title %}WMS: Orders{% endblock %}
+{% block stlcss %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static '/productsapp/app.css' %}">
+{% endblock %}
+{% block content %}
+<h1>Orders: {{ pname }}</h1>
+<b>{{ message }}</b>
+<div>
+  {{ time }}
+</div>
+<hr>
+<h1> {{ app.orderID }} </h1>
+<div class="dvproject">
+    <p>productID: {{ dorders.productID }}</p>
+    <p>unitPrice: {{ dorders.unitPrice }}</p>
+    <p>quantity: {{ dorders.quantity }}</p>
+    <p>discount {{ dorders.discount }}</p>
+</div>
+<hr>
+<label>
+   {{ updates }}
+</label>
+<hr>
+{{ ip }}
+{{ year }}
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "baseapp.html" %}
+{% block title %}WMS: Orders{% endblock %}
+{% block stlcss %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static '/productsapp/app.css' %}">
+{% endblock %}
+{% block content %}
+<h1>Orders: {{ pname }}</h1>
+<div>
+  {{ time }}
+</div>
+<hr>
+<div>
+  <progress id="ckodbprogres" value="0" max="100">0%</progress>
+  <div id="dvresults">
+  </div>
+</div>
+<div>
+  <label id="lblckordes" name="lblckordes"></label>
+  <p><input class="ccinpt" type="text" id="cksorders" name="cksorders" placeholder="productid" value="{{ productid }}" maxlength="90" /></p>
+  <button type="button" id="btnckordes" name="btnckordes" onclick="checkOrders()" >Check</button>
+</div>
+<hr>
+<div class="dvregister">
+  <form class="frmreg" action="/ordersapp/orders" method="post">
+  {% csrf_token %}
+  <div class="dvreg">
+      <label>Order ID:</label><br>
+      <input class="ccinpt" type="text" id="orderID" name="orderID" placeholder="oderid" value="{{ orderid }}" maxlength="90"  required/>
+  </div>
+  <div class="dvreg">
+      <label>Product ID:</label><br>
+      <input class="ccinpt" type="text" id="productID" name="productID" placeholder="productid" value="{{ productid }}" maxlength="90"  required/>
+  </div>
+  <div class="dvreg">
+      <label>Unit Price:</label><br>
+      <input class="cinpt" type="number" id="unitPrice" name="unitPrice" placeholder="unitprice" value="{{ unitprice }}" min="0.00" required />
+  </div>
+  <div class="dvreg">
+      <label>Quantity:</label><br>
+      <input class="cinpt" type="number" id="quantity" name="quantity" placeholder="quantity" value="{{ quantity }}" min="0.00" required/>
+  </div>
+  <div class="dvreg">
+      <label>Discount:</label><br>
+      <input class="cinpt" type="number" id="discount" name="discount" placeholder="discount" value="{{ discount }}" min="0.00" required/>
+  </div>
+  <p><input type="submit" value="OK"/></p>
+  </form>
+</div>
+
+<div>
+  <hr>
+  <p>info: {{ info }}</p>
+  <hr>
+  {{ year }}
+</div>
+
+<script src="{% static '/ordersapp/js/app.js' %}"></script>
+{% endblock %}

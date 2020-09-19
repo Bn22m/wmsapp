@@ -1,0 +1,34 @@
+/* app.css */
+
+#tblproducts, #tblproductsfilter, table {
+  border-collapse: collapse;
+  width: 80%;
+  border: 2px solid #abc;
+  font-size: 12px;
+}
+
+#tblproducts th, #tblproducts td, th, td,
+#tblproductsfilter th, #tblproductsfilter td {
+  text-align: left;
+  padding: 4px;
+}
+
+#tblproducts tr.header, #tblproducts tr:hover, tr:hover, th,
+#tblproductsfilter tr.header, #tblproductsfilter tr:hover {
+  background-color: #bdc;
+}
+
+#tblproducts tr, #tblproductsfilter tr, tr {
+  border-bottom: 1px solid #bcd;
+}
+
+.dv2tbl {
+  border: 10px solid #777;
+  width: auto;
+  padding: 10px;
+  margin-bottom: 50px;
+}
+
+button:hover {
+  background-color: #ff0;
+}
